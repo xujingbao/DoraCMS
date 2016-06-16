@@ -24,8 +24,9 @@ var cache = require('../util/cache');
 /* GET home page. */
 router.get('/', function (req, res, next) {
 
-    siteFunc.renderToTargetPageByType(req,res,'index');
-
+    //siteFunc.renderToTargetPageByType(req,res,'index');
+    //req.session.vnum = rw.random(4);
+    //res.render('manage/adminLogin',{ title: settings.SITETITLE , description : 'DoraCMS后台管理登录'});
 });
 
 //缓存站点地图

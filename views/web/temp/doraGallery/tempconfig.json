@@ -1,0 +1,9 @@
+﻿[{
+    name:  'doraGallery',
+    alias : 'doraGallery',
+    version : 'v1.0.0',
+    sImg: '/images/demo.jpg',
+    author: 'doramart',
+    comment : '以前做的一款主题，适合做一些展示类的网站'
+
+}]

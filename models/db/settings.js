@@ -90,6 +90,3 @@ module.exports = {
     system_atLeast_one : '请选择至少一项后再执行删除操作！',
     system_batch_delete_not_allowed : '对不起，该模块不允许批量删除！'
 };
-
-
-

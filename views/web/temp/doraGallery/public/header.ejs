@@ -1,0 +1,152 @@
+<!--头部模板-->
+<!-- Fixed navbar -->
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/"><img src="/themes/<%=staticforder%>/images/logo.png" alt=""/></a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li><a href="#" class="active">发现</a></li>
+                <li><a href="#about">实验室</a></li>
+                <li><a href="#contact">关于</a></li>
+
+            </ul>
+            <ul class="nav navbar-nav pull-right">
+                <div id="hrnav">
+                    <div id="soform" class="">
+                        <form action="/content/searchResult/items">
+                            <span class="icon-search fa fa-search"></span>
+                            <input type="hidden" autocomplete="off" class="hide" value="4" name="cid">
+                            <input type="hidden" autocomplete="off" class="hide" value="rec" name="sort">
+                            <input type="hidden" autocomplete="off" class="hide" value="" name="fid">
+                            <input type="hidden" autocomplete="off" class="hide" value="" name="owner">
+                            <input type="hidden" autocomplete="off" class="hide" value="all" name="time">
+                            <input type="text" autocomplete="off" placeholder="关键字查找" value="" name="searchKey">
+                        </form>
+                    </div>
+
+
+                        <!--<div class="btn-group" role="group" aria-label="">-->
+                        <% if(!logined){ %>
+                        <div id="mulogin">
+                            <a role="button" type="button" class="btn btn-gray" href="/users/login">登录</a>
+                            <a role="button" type="button" class="btn btn-blue" href="/users/reg">注册</a>
+                        </div>
+                        <% }else{ %>
+                        <div class="ulogo">
+                        <span class="logoImg" id="showMyOpt">
+                            <a href="##"><img src="<%=userInfo.logo%>" width="30" height="30" alt="my logo"/></a>
+                        </span>
+                            <div class="rncontent rnct hide" id="uoptlist">
+                                <ul>
+                                    <li><a href="/users/userCenter">账号设置</a></li>
+                                    <li><a href="/users/setUserPsd">修改密码</a></li>
+                                    <li><a href="#" id="userLoginOut">退出</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <% } %>
+
+                        <!--</div>-->
+
+                </div>
+
+            </ul>
+        </div><!--/.nav-collapse -->
+
+    </div>
+    <div id="nav-bread" class="nav-bread">
+        <div class="container">
+            <div data-name="fid" id="sofid" class="sotj soitem soone">
+                <div class="soitemlabel">
+                    <span class="soitemlabeltxt">文档</span>
+                    <span class="yy-icon yy-soi"></span>
+                </div>
+                <div class="soitemcontent">
+                    <ul>
+                        <li><a class="active" data-value="0" href="/">所有文档</a></li>
+                        <%for(var i=0;i<cateTypes.length;i++){%>
+                        <li>
+                            <a data-value="<%=cateTypes[i]._id%>" href="/<%=cateTypes[i].defaultUrl%>___<%=cateTypes[i]._id%>"><%=cateTypes[i].name%></a>
+                        </li>
+                        <%}%>
+                    </ul>
+                </div>
+            </div>
+            <div data-name="sort" class="sotj soitem soone">
+                <div class="soitemlabel">
+                    <span class="icon-flag"></span>
+                    <span class="soitemlabeltxt">最新推荐</span>
+                    <span class="yy-icon yy-soi"></span>
+                </div>
+                <div class="soitemcontent">
+                    <ul>
+                        <li>
+                            <a class="active" data-value="rec" href="#">
+                                <span class="fa fa-flag"></span>最新推荐</a>
+                        </li>
+                        <li>
+                            <a data-value="like" href="#">
+                                <span class="fa fa-heart"></span>最多喜欢</a>
+                        </li>
+                        <li>
+                            <a data-value="view" href="#">
+                                <span class="fa fa-eye"></span>最多浏览</a>
+                        </li>
+                    </ul>
+                    <div class="clear"></div>
+                </div>
+            </div>
+            <div data-name="sort" class="sotj soitem soone">
+                <div class="soitemlabel">
+                    <span class="icon-user" aria-hidden="true"></span>
+                    <span class="soitemlabeltxt">所有者</span>
+                    <span class="yy-icon yy-soi"></span>
+                </div>
+                <div class="soitemcontent">
+                    <ul>
+                        <li>
+                            <a class="active" data-value="rec" href="#">原创</a>
+                        </li>
+                        <li>
+                            <a data-value="like" href="#">转载</a>
+                        </li>
+
+                    </ul>
+                    <div class="clear"></div>
+                </div>
+            </div>
+            <div data-name="sort" class="sotj soitem soone">
+                <div class="soitemlabel">
+                    <span class="icon-calendar" aria-hidden="true"></span>
+                    <span class="soitemlabeltxt">不限</span>
+                    <span class="yy-icon yy-soi"></span>
+                </div>
+                <div class="soitemcontent">
+                    <ul>
+                        <li>
+                            <a class="active" data-value="rec" href="#">一周内</a>
+                        </li>
+                        <li>
+                            <a data-value="like" href="#">一月内</a>
+                        </li>
+                        <li>
+                            <a data-value="view" href="#">一年内</a>
+                        </li>
+                        <li>
+                            <a data-value="comment" href="#">不限</a>
+                        </li>
+                    </ul>
+                    <div class="clear"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>

@@ -1,0 +1,60 @@
+<div class="container">
+
+    <div class="blog-detail">
+        <div id="puinfo">
+            <div id="puinfobody">
+                <h3><%=documentInfo.title%>
+                    <span class="yy-icon yy-tjhs" title="列表推荐"></span>
+                </h3>
+                <p>作者：<a href="###" target="_blank"><%=documentInfo.author.name%></a>
+                    &nbsp;&nbsp;发布日期：<span class="item-time"><i class="icon-time"></i><a><%=myDateFormat(documentInfo.date)%></a></span>
+                </p>
+            </div>
+            <span class="pull-right" id="prenqi">
+                <span>人气</span><%=documentInfo.clickNum%>
+            </span>
+        </div>
+        <div class="col-md-12 col-sm-12 col-xs-12 content">
+            <div class="col-md-2 col-sm-2">&nbsp;</div>
+            <div class="col-md-8 col-sm-8 col-xs-12">
+                <p><%- documentInfo.comments%></p>
+            </div>
+            <div class="col-md-2 col-sm-2"></div>
+
+        </div>
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12 blog-footer">
+
+                <div class="share-detail">
+                    <div class="pctiem pull-left" id="ptags">
+                        <span class="yy-icon yy-soi2"></span>标签&nbsp;&nbsp;
+                        <%var tagsArr = documentInfo.tags.split(',')%>
+                        <%for(var i=0;i<tagsArr.length;i++){%>
+                            <a target="_blank" href="###"><%=tagsArr[i]%></a>&nbsp;
+                        <%}%>
+
+                    </div>
+                    <div class="share-btn">
+                        <a class="pvshare yy-icon yy-ssina" target="_blank" href="#"></a>&nbsp;
+                        <a class="pvshare yy-icon yy-sqq" target="_blank" href="#"></a>&nbsp;
+                        <a class="pvshare yy-icon yy-stt" target="_blank" href="#"></a>&nbsp;
+                        <a class="pvshare yy-icon yy-sfb" target="_blank" href="#"></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+    <div class="maybeLike">
+
+        <div class="col-md-12">
+            <% include ../public/reCommendList %>
+        </div>
+        <div class="clearfix"></div>
+
+    </div>
+
+    <% include ../public/msgBoard %>
+
+
+</div> <!-- /container -->

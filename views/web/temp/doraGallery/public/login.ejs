@@ -1,0 +1,58 @@
+<!--用户登录模块-->
+<div class="userlogin" ng-controller="userlogin">
+    <div class="ulpanel">
+        <form name="loginForm" ng-submit="processLogForm(loginForm.$valid)" novalidate>
+            <p class="login-title">
+                <span id="ul-s2">会员登录</span>
+                <span id="ul-s3">还没有账号 <a href="##">立即注册</a></span>
+            </p>
+            <p class="email-login">邮箱登录<small class="text-danger hide" id="errorInfo">邮箱和密码不匹配</small></p>
+            <div class="form-group">
+                <input type="email" class="form-control" name="email" ng-model="logFormData.email" ng-pattern="/^\w+((-\w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z0-9]+$/" placeholder="请填写邮箱"  required>
+                <label for="inputError" class="control-label text-danger" ng-show="loginForm.email.$invalid && !loginForm.email.$pristine"><i class="glyphicon glyphicon-info-sign"></i> 请填写正确的邮箱地址</label>
+
+            </div>
+            <div class="form-group">
+                <input type="password" class="form-control" name="password" ng-model="logFormData.password" ng-pattern="/(?!^\\d+$)(?!^[a-zA-Z]+$)(?!^[_#@]+$).{5,}/" ng-maxlength="12" placeholder="请输入密码" required>
+                <label for="inputError" class="control-label text-danger" ng-show="loginForm.password.$invalid && !loginForm.password.$pristine"><i class="glyphicon glyphicon-info-sign"></i> 6-12位，只能包含字母、数字和下划线</label>
+
+            </div>
+
+            <div id="ul-s5"><button type="submit" class="btn btn-blue btn-login" ng-disabled="loginForm.$invalid">登录</button>
+
+                <a href="/users/lostPassword" id="ul-s6">忘记密码 ? </a>
+
+            </div>
+
+        </form>
+
+    </div>
+</div>
+
+<script>
+    var doraApp = angular.module("webApp",[]);
+    doraApp.controller("userlogin",function($scope,$http) {
+        $scope.processLogForm = function(isValid){
+
+            if(isValid){
+                $http({
+                    method  : 'POST',
+                    url     : "/users/doLogin",
+                    data    : $.param($scope.logFormData),  // pass in data as strings
+                    headers : { 'Content-Type': 'application/x-www-form-urlencoded' }  // set the headers so angular passing info as form data (not request payload)
+                })
+                .success(function(data) {
+                    if(data === "success"){
+                        alert('登录成功！');
+                        window.location = '/';
+                    }else{
+                        $('#errorInfo').removeClass('hide').text(data);
+                    }
+                });
+            }
+            else{
+                alert("error");
+            }
+        };
+    })
+</script>

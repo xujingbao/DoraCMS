@@ -1,0 +1,55 @@
+<!--分页模块-->
+<div id="pages">
+
+        <%var localUrl;var param ='';%>
+        <%if(pageType == 'index'){
+            localUrl = "/page";
+        }else if(pageType == 'cate'){
+            localUrl = '/'+ cateInfo.defaultUrl + '___' + cateInfo._id;
+        }else if(pageType == 'search'){
+            param = '?searchKey=' + pageInfo.searchKey;
+            localUrl = '/content/searchResult/items';
+        }else if(pageType == 'replies'){
+            localUrl = '/users/userReplies/p';
+        }else if(pageType == 'notifies'){
+            localUrl = '/users/userNotifies/p';
+        }
+        %>
+
+        <%var totalItems = pageInfo.totalItems;var limit = pageInfo.limit%>
+        <%var totalPage = Math.ceil(totalItems / limit) ;%>
+
+        <%
+        var page_start = pageInfo.currentPage - 2 > 0 ? pageInfo.currentPage - 2 : 1;
+        var page_end = page_start + 4 >= totalPage ? totalPage : page_start + 4;
+        %>
+
+        <%if(pageInfo.currentPage != 1){%>
+        <a  id="pagepre" href="<%=localUrl%>—1.html<%=param%>">
+            <span class="fa fa-angle-double-left" aria-hidden="true"></span>
+        </a>
+        <%}%>
+
+        <% if (page_start > 1) { %>
+        <span>...</span>
+        <% } %>
+
+        <%for(var i=page_start;i<=page_end;i++){%>
+            <%if(i == pageInfo.currentPage){%>
+                 <a  id="pageactive"><%=i%></a>
+            <%}else{%>
+                 <a href="<%=localUrl%>—<%=i%>.html<%=param%>"><%=i%></a>
+            <%}%>
+        <%}%>
+
+        <% if (page_end < totalPage ) { %>
+        <a>...</a>
+        <% } %>
+
+        <%if(pageInfo.currentPage != totalPage){%>
+            <a  id="pagenext" href="<%=localUrl%>—<%=totalPage%>.html<%=param%>">
+                <span class="fa fa-angle-double-right" aria-hidden="true"></span>
+            </a>
+        <%}%>
+
+</div>

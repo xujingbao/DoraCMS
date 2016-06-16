@@ -1,0 +1,13 @@
+<!--文章推荐模块-->
+<h3>猜你喜欢</h3>
+<%if(reCommendListData.length>0){%>
+<%reCommendListData.forEach(function(item){%>
+
+<ul>
+    <li class="col-md-3"><a href="/details/<%=item._id%>.html"><img class="img-responsive" alt="<%=item.title%>" src="<%=item.sImg%>"/></a></li>
+</ul>
+<%})%>
+<%}else{%>
+<li class="text-center">暂无推荐内容...</li>
+<%}%>
+
