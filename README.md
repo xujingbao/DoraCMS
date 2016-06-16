@@ -1,3 +1,8 @@
+创建分支
+
+Node:v5.11.1
+Redis:3.2.0
+Mongodb:3.2.7
 
 ##问题：
 - 1、redis connection to 127.0.0.1:6379 failed 这个是redis连接不上的问题，请看这篇文章[DoraCMS redis报错问题](http://www.html-js.cn/details/4yyl6O7A.html)
